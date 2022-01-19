@@ -4,8 +4,17 @@ import HomePage from "../Screens/HomePage";
 import SplashScreen from "../Screens/SplashScreen";
 import SelectCountry from "../Screens/OnBoarding/SelectCountry";
 import MyTabs from "./TopBar";
+import SearchScreen from "../Screens/SearchScreen";
 
-const Stack = createNativeStackNavigator();
+type RootStackParamsList = {
+    Splash: undefined;
+    HomePage: undefined;
+    SelectCountry: undefined,
+    SearchScreen: undefined,
+
+}
+
+const Stack = createNativeStackNavigator<RootStackParamsList>();
 
 export default function MyStack() {
     const [splash, setSplash] = useState(true);
@@ -27,6 +36,7 @@ export default function MyStack() {
                     <>
                     <Stack.Screen name="HomePage" component={HomePage} />
                     <Stack.Screen name="SelectCountry" component={SelectCountry} />
+                    <Stack.Screen name="SearchScreen" component={SearchScreen} />
                         
                     </>
             }

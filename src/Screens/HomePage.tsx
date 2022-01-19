@@ -1,3 +1,4 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { useEffect, useState } from 'react'
 import { View, Text, SafeAreaView, StatusBar, FlatList, TouchableOpacity, Alert } from 'react-native'
 import CustomCard from '../Components/CustomCard'
@@ -24,6 +25,16 @@ const categoryData = [
     { value: 'science' }
 ]
 
+
+type RootStackParamsList = {
+    Splash: undefined;
+    HomePage: undefined;
+    SelectCountry: undefined,
+    SearchScreen: undefined,
+
+}
+
+type Props = NativeStackScreenProps<RootStackParamsList, 'HomePage'>
 
 export default function HomePage() {
     const [data, setData] = useState<Array<object>>();
@@ -67,6 +78,7 @@ export default function HomePage() {
             <View>
                 <FlatList
                     data={data}
+                    style={{marginBottom: 20}}
                     renderItem={({ item }): any =>
                         <CustomCard data={item} />
                     }
