@@ -1,9 +1,10 @@
 import { View, Text } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { requestLocationPermission } from '../../Utils/PermissionFunction';
 import * as RNLocalize from "react-native-localize";
 
 export default function SelectCountry() {
+    const [Country, setCountry] = useState<string>()
 
     useEffect(() => {
         requestLocationPermission()
@@ -11,6 +12,9 @@ export default function SelectCountry() {
                 console.log({ res });
                 if (res === 'yes') {
                     console.log(RNLocalize.getLocales());
+                    const country = RNLocalize.getLocales();
+                    const Code = country[0].countryCode;
+                    setCountry(Code)
                 }
 
             })
@@ -20,7 +24,7 @@ export default function SelectCountry() {
 
     return (
         <View>
-            <Text>hi</Text>
+            <Text>select country {Country}</Text>
         </View>
     );
 }
