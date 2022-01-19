@@ -46,7 +46,7 @@ export default function SearchScreen({navigation}: Props) {
                     placeholder="Search"
                     onChangeText={(txt) => SearchData(txt)}
                     value={search}
-                    style={{zIndex: 10,width: wp(80), backgroundColor: colors.backdrop, color: colors.text}}
+                    style={{zIndex: 10,width: wp(80), backgroundColor: colors.background, color: colors.text}}
                 />
             </View>
 

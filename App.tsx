@@ -1,15 +1,3 @@
-// import * as React from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
-// import MyStack from './src/Navigation/Stack';
-
-// export default function App() {
-//   return (
-//     <NavigationContainer>
-//       <MyStack />
-//     </NavigationContainer>
-//   );
-// }
-
 import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
 import { useColorScheme } from 'react-native';
@@ -47,7 +35,7 @@ export default function Main() {
   const scheme = useColorScheme();
   return (
     <NavigationContainer>
-      <PaperProvider theme={scheme !== 'dark' ? darkTheme : lightTheme}>
+      <PaperProvider theme={scheme === 'dark' ? darkTheme : lightTheme}>
         <MyStack />
       </PaperProvider>
     </NavigationContainer>

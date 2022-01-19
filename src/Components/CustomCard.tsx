@@ -12,7 +12,6 @@ type RootStackParamsList = {
     SelectCountry: undefined,
     SearchScreen: undefined,
     WebScreen: object | undefined
-
 }
 
 type NavProps = NativeStackNavigationProp<RootStackParamsList>

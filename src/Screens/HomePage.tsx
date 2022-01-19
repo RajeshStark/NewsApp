@@ -1,9 +1,10 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { useEffect, useState } from 'react'
-import { View, Text, SafeAreaView, StatusBar, FlatList, TouchableOpacity, Alert } from 'react-native'
+import { View, Text, SafeAreaView, StatusBar, FlatList, TouchableOpacity, Alert, ScrollView } from 'react-native'
 import { useTheme } from 'react-native-paper'
 import CustomCard from '../Components/CustomCard'
 import Header from '../Components/Header'
+import TopCard from '../Components/TopCards'
 import MyTabs from '../Navigation/TopBar'
 import { PrimaryColors } from '../Utils/colors'
 import { hp, wp } from '../Utils/Scale'
@@ -28,15 +29,18 @@ const categoryData = [
 
 
 export default function HomePage() {
-    const [data, setData] = useState<Array<object>>();
+    const [data, setData] = useState<Array<object>>([]);
+    const [topData, setTopData] = useState<Array<object>>([]);
     const [category, setCategory] = useState('news')
     const { colors } = useTheme();
 
     useEffect(() => {
         GetData(category)
             .then((res) => {
-                // console.log(res);
-                setData(res.articles)
+                const top = res.articles.splice(0, 9);
+                setTopData(top);
+                setData(res.articles);
+
             })
             .catch((err) => {
                 console.log({ err });
@@ -67,16 +71,32 @@ export default function HomePage() {
                 />
             </View>
 
-            <View>
-                <FlatList
-                    data={data}
-                    style={{marginBottom: 20}}
-                    renderItem={({ item }): any =>
-                        <CustomCard data={item} />
-                    }
-                    keyExtractor={(item: any) => item._id}
-                />
-            </View>
+            <ScrollView>
+                <View>
+                    <FlatList
+                        data={topData}
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        style={{ marginBottom: 20 }}
+                        renderItem={({ item }): any =>
+                            <TopCard data={item} />
+                        }
+                        keyExtractor={(item: any) => item._id}
+                    />
+                </View>
+
+                <Text style={{fontSize: 22, fontWeight: 'bold', color: colors.text, margin: 10}}>Latest News</Text>
+                <View>
+                    <FlatList
+                        data={data}
+                        style={{ marginBottom: 20 }}
+                        renderItem={({ item }): any =>
+                            <CustomCard data={item} />
+                        }
+                        keyExtractor={(item: any) => item._id}
+                    />
+                </View>
+            </ScrollView>
 
 
         </SafeAreaView>
