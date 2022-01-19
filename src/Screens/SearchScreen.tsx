@@ -1,6 +1,6 @@
 import { View, Text, SafeAreaView, StatusBar, FlatList } from 'react-native';
 import React, { useState } from 'react';
-import { IconButton, Searchbar } from 'react-native-paper';
+import { IconButton, Searchbar, useTheme } from 'react-native-paper';
 import { PrimaryColors } from '../Utils/colors';
 import { hp, wp } from '../Utils/Scale';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -20,7 +20,8 @@ type Props = NativeStackScreenProps<RootStackParamsList, 'SearchScreen'>
 export default function SearchScreen({navigation}: Props) {
     const [search, setSearch] = useState('');
     const [data, setData] = useState<Array<object>>()
-    
+    const { colors } = useTheme();
+
     const SearchData = (txt : string) => {
         setSearch(txt);
         GetSearchData(txt)
@@ -34,8 +35,8 @@ export default function SearchScreen({navigation}: Props) {
 
     }
     return (
-        <SafeAreaView style={{ backgroundColor: PrimaryColors.white, height: hp(100), width: wp(100) }}>
-            <StatusBar barStyle={'dark-content'} backgroundColor={PrimaryColors.white} />
+        <SafeAreaView style={{ backgroundColor: colors.background, height: hp(100), width: wp(100) }}>
+            <StatusBar barStyle={'dark-content'} backgroundColor={colors.background} />
             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
                 <IconButton
                     icon={'arrow-left'}
@@ -45,7 +46,7 @@ export default function SearchScreen({navigation}: Props) {
                     placeholder="Search"
                     onChangeText={(txt) => SearchData(txt)}
                     value={search}
-                    style={{width: wp(80)}}
+                    style={{zIndex: 10,width: wp(80), backgroundColor: colors.backdrop, color: colors.text}}
                 />
             </View>
 

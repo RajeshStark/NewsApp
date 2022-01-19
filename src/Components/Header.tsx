@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 import React from 'react';
-import { Appbar, IconButton } from 'react-native-paper';
+import { Appbar, IconButton, useTheme } from 'react-native-paper';
 import { PrimaryColors } from '../Utils/colors';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -21,9 +21,10 @@ type NavProps = NativeStackNavigationProp<RootStackParamsList>
 
 export default function Header({ title }: Props) {
     const navigation : NavProps = useNavigation()
+    const { colors } = useTheme();
     return (
         <View style={{ margin: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Text style={{ fontSize: 22, color: '#000', fontWeight: '700' }}>{title}</Text>
+            <Text style={{ fontSize: 22, color: colors.text, fontWeight: '700' }}>{title}</Text>
             
             <View style={{flexDirection:'row', alignItems:'center'}}>
             <IconButton

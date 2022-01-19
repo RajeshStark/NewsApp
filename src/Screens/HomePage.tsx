@@ -1,6 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import React, { useEffect, useState } from 'react'
 import { View, Text, SafeAreaView, StatusBar, FlatList, TouchableOpacity, Alert } from 'react-native'
+import { useTheme } from 'react-native-paper'
 import CustomCard from '../Components/CustomCard'
 import Header from '../Components/Header'
 import MyTabs from '../Navigation/TopBar'
@@ -29,6 +30,7 @@ const categoryData = [
 export default function HomePage() {
     const [data, setData] = useState<Array<object>>();
     const [category, setCategory] = useState('news')
+    const { colors } = useTheme();
 
     useEffect(() => {
         GetData(category)
@@ -44,8 +46,8 @@ export default function HomePage() {
 
 
     return (
-        <SafeAreaView style={{ backgroundColor: PrimaryColors.white, height: hp(100), width: wp(100) }}>
-            <StatusBar barStyle={'dark-content'} backgroundColor={PrimaryColors.white} />
+        <SafeAreaView style={{ backgroundColor: colors.background, height: hp(100), width: wp(100) }}>
+            <StatusBar barStyle={'dark-content'} backgroundColor={colors.background} />
             <Header title='News App' />
             <View>
                 <FlatList
@@ -56,10 +58,10 @@ export default function HomePage() {
                     renderItem={({ item }): any =>
                         <TouchableOpacity onPress={() => setCategory(item.value)}
                             style={{ margin: 10, height: 50, }}>
-                            <Text style={{ fontSize: 16, color: category === item.value ? PrimaryColors.Primary : 'grey', }}>
+                            <Text style={{ fontSize: 16, color: category === item.value ? colors.primary : colors.text, }}>
                                 {item.value}
                             </Text>
-                            <View style={{ height: 3, backgroundColor: category === item.value ? PrimaryColors.Primary : '#fff', width: 40 }} />
+                            <View style={{ height: 3, backgroundColor: category === item.value ? colors.primary : colors.background, width: 40 }} />
                         </TouchableOpacity>
                     }
                 />
