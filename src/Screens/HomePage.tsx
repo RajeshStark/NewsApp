@@ -26,16 +26,6 @@ const categoryData = [
 ]
 
 
-type RootStackParamsList = {
-    Splash: undefined;
-    HomePage: undefined;
-    SelectCountry: undefined,
-    SearchScreen: undefined,
-
-}
-
-type Props = NativeStackScreenProps<RootStackParamsList, 'HomePage'>
-
 export default function HomePage() {
     const [data, setData] = useState<Array<object>>();
     const [category, setCategory] = useState('news')

@@ -7,7 +7,6 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 type Props = {
     title: string;
-    goBack?: () => void;
 }
 
 type RootStackParamsList = {
@@ -20,7 +19,7 @@ type RootStackParamsList = {
 
 type NavProps = NativeStackNavigationProp<RootStackParamsList>
 
-export default function Header({ title, goBack }: Props) {
+export default function Header({ title }: Props) {
     const navigation : NavProps = useNavigation()
     return (
         <View style={{ margin: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
