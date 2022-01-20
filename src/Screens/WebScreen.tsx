@@ -22,7 +22,7 @@ export default function WebScreen({ navigation, route }: Props) {
 
 
     return (
-        <View>
+        <View style={{flex: 1}}>
             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
                 <IconButton
                     icon={'arrow-left'}
@@ -30,11 +30,12 @@ export default function WebScreen({ navigation, route }: Props) {
                 />
 
             </View>
-            {/* <WebView
-                source={{ uri: 'https://fb.com' }}
+            <WebView
+                source={{ uri: 'https://reactnative.dev/' }}
+                // style={{flex: 1}}
                 style={{ width: wp(100), height: hp(90) }}
                 androidHardwareAccelerationDisabled={false}
-            /> */}
+            />
         </View>
     );
 }

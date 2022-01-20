@@ -13,8 +13,7 @@ type RootStackParamsList = {
     Splash: undefined;
     HomePage: undefined;
     SelectCountry: undefined,
-    SearchScreen: undefined,
-
+    SearchScreen: undefined
 }
 
 type NavProps = NativeStackNavigationProp<RootStackParamsList>
