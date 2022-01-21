@@ -17,7 +17,7 @@ type RootStackParamsList = {
 type Props = NativeStackScreenProps<RootStackParamsList, 'WebScreen'>
 
 export default function WebScreen({ navigation, route }: Props) {
-    const { data } = route.params;
+    const { data } : any = route.params;
     console.log("data web", data);
 
 
