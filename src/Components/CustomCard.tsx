@@ -24,7 +24,7 @@ export default function CustomCard({ data }: any) {
     return (
         <TouchableOpacity
         onPress={() => navigation.navigate('WebScreen', {
-            data : data.link
+            data : data
         })}
             style={{
                 backgroundColor: colors.background,

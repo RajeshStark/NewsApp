@@ -72,6 +72,7 @@ export default function HomePage() {
             </View>
 
             <ScrollView>
+            <Text style={{fontSize: 22, fontWeight: 'bold', color: colors.text, margin: 10}}>Top {category === 'news' ? 'news' : category + ' stories'} </Text>
                 <View>
                     <FlatList
                         data={topData}
@@ -85,7 +86,7 @@ export default function HomePage() {
                     />
                 </View>
 
-                <Text style={{fontSize: 22, fontWeight: 'bold', color: colors.text, margin: 10}}>Latest News</Text>
+                <Text style={{fontSize: 22, fontWeight: 'bold', color: colors.text, margin: 10}}>Latest {category === 'news' ? '' : category} News</Text>
                 <View>
                     <FlatList
                         data={data}

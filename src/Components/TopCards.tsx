@@ -26,7 +26,7 @@ export default function TopCard({ data }: any) {
             {data.media !== '' ?
                 <TouchableOpacity
                     onPress={() => navigation.navigate('WebScreen', {
-                        data: data.link
+                        data: data
                     })}
                     style={{
                         backgroundColor: colors.background,

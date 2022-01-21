@@ -15,7 +15,6 @@ const darkTheme = {
     text: '#D6D6D6',
     onSurface: '#D6D6D6',
   }
-
 };
 
 const lightTheme = {

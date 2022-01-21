@@ -17,8 +17,8 @@ type RootStackParamsList = {
 type Props = NativeStackScreenProps<RootStackParamsList, 'WebScreen'>
 
 export default function WebScreen({ navigation, route }: Props) {
-    // const { data } = route.params;
-    // console.log("data web", data);
+    const { data } = route.params;
+    console.log("data web", data);
 
 
     return (
@@ -28,10 +28,10 @@ export default function WebScreen({ navigation, route }: Props) {
                     icon={'arrow-left'}
                     onPress={() => navigation.goBack()}
                 />
-
+                <Text style={{fontSize: 18, fontWeight:'700'}}>{data.author}</Text>
             </View>
             <WebView
-                source={{ uri: 'https://reactnative.dev/' }}
+                source={{ uri: data.link }}
                 // style={{flex: 1}}
                 style={{ width: wp(100), height: hp(90) }}
                 androidHardwareAccelerationDisabled={false}

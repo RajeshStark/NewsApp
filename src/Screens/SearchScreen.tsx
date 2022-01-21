@@ -17,21 +17,23 @@ type RootStackParamsList = {
 
 type Props = NativeStackScreenProps<RootStackParamsList, 'SearchScreen'>
 
-export default function SearchScreen({navigation}: Props) {
+export default function SearchScreen({ navigation }: Props) {
     const [search, setSearch] = useState('');
     const [data, setData] = useState<Array<object>>()
     const { colors } = useTheme();
 
-    const SearchData = (txt : string) => {
+    const SearchData = (txt: string) => {
         setSearch(txt);
-        GetSearchData(txt)
-        .then((res) => {
-            setData(res.articles)
-        })
-        .catch((err) => {
-            console.log(err);
-            
-        })
+        setTimeout(() => {
+            GetSearchData(txt)
+                .then((res) => {
+                    setData(res.articles)
+                })
+                .catch((err) => {
+                    console.log(err);
+
+                })
+        }, 2000);
 
     }
     return (
@@ -46,18 +48,18 @@ export default function SearchScreen({navigation}: Props) {
                     placeholder="Search"
                     onChangeText={(txt) => SearchData(txt)}
                     value={search}
-                    style={{zIndex: 10,width: wp(80), backgroundColor: colors.background, color: colors.text}}
+                    style={{ zIndex: 10, width: wp(80), backgroundColor: colors.background, color: colors.text }}
                 />
             </View>
 
             <FlatList
-                    data={data}
-                    style={{marginBottom: 20, marginTop: 10}}
-                    renderItem={({ item }): any =>
-                        <CustomCard data={item} />
-                    }
-                    keyExtractor={(item: any) => item._id}
-                />
+                data={data}
+                style={{ marginBottom: 20, marginTop: 10 }}
+                renderItem={({ item }): any =>
+                    <CustomCard data={item} />
+                }
+                keyExtractor={(item: any) => item._id}
+            />
         </SafeAreaView>
     );
 }
