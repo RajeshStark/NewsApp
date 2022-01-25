@@ -54,7 +54,7 @@ export default function SearchScreen({ navigation }: Props) {
 
             <FlatList
                 data={data}
-                style={{ marginBottom: 20, marginTop: 10 }}
+                style={{ marginBottom: 20, marginTop: 10, alignSelf: 'center' }}
                 renderItem={({ item }): any =>
                     <CustomCard data={item} />
                 }

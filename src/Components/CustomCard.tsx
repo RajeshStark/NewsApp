@@ -31,10 +31,11 @@ export default function CustomCard({ data }: any) {
                 width: wp(90), 
                 borderRadius: 5, 
                 flexDirection: 'row',
-                
+                borderColor:'#dcdcdc',
+                borderWidth: 0.5,
                 paddingVertical: 10, 
                 marginVertical: 10,                
-                backgroundColor: '#dcdcdc'
+                // backgroundColor: '#dcdcdc'
             }}>
             {data.media !== '' ?
                 <Image source={{ uri: data.media }}
