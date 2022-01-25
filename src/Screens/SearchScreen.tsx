@@ -33,7 +33,7 @@ export default function SearchScreen({ navigation }: Props) {
                     console.log(err);
 
                 })
-        }, 2000);
+        }, 4000);
 
     }
     return (
