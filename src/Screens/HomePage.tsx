@@ -1,9 +1,10 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { View, Text, SafeAreaView, StatusBar, FlatList, TouchableOpacity, Alert, ScrollView } from 'react-native'
 import { useTheme } from 'react-native-paper'
 import CustomCard from '../Components/CustomCard'
 import Header from '../Components/Header'
+import Loader from '../Components/Loader'
 import TopCard from '../Components/TopCards'
 import MyTabs from '../Navigation/TopBar'
 import { PrimaryColors, AppThemeColor, Black, White } from '../Utils/colors'
@@ -32,14 +33,22 @@ export default function HomePage() {
     const [topData, setTopData] = useState<Array<object>>([]);
     const [category, setCategory] = useState('news')
     const { colors } = useTheme();
+    const flatListRef = useRef<FlatList>(null);
+    const [loading, setLoading] = useState<boolean>(false)
+
 
     useEffect(() => {
+        setLoading(true)
         GetData(category)
             .then((res) => {
                 const top = res.articles.splice(0, 9);
+                flatListRef.current?.scrollToOffset({ animated: true, offset: 0 });
                 setTopData(top);
                 setData(res.articles);
-
+                
+                setTimeout(() => {
+                    setLoading(false)
+                }, 1000);
             })
             .catch((err) => {
                 console.log({ err });
@@ -51,6 +60,7 @@ export default function HomePage() {
     return (
         <SafeAreaView style={{ backgroundColor: colors.background, height: hp(100), width: wp(100) }}>
             <StatusBar barStyle={'dark-content'} backgroundColor={colors.background} />
+            <Loader loading={loading}/>
             <Header title='News App' />
             <View>
                 <FlatList
@@ -75,6 +85,7 @@ export default function HomePage() {
             <FlatList
                 nestedScrollEnabled
                 data={['']}
+                ref={flatListRef}
                 renderItem={(item) =>
                     <>
                         <Text style={{ fontSize: 22, fontWeight: 'bold', color: Black, paddingHorizontal: 30, paddingVertical: 10 }}>Top {category === 'news' ? 'news' : category + ' stories'} </Text>
@@ -82,7 +93,6 @@ export default function HomePage() {
                             <FlatList
                                 data={topData}
                                 snapToInterval={wp(85)}
-                                // scrollEventThrottle={}
                                 disableIntervalMomentum={true}
                                 horizontal
                                 showsHorizontalScrollIndicator={false}
