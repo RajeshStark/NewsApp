@@ -37,8 +37,8 @@ export default function SearchScreen({ navigation }: Props) {
 
     }
     return (
-        <SafeAreaView style={{ backgroundColor: AppThemeColor, height: hp(100), width: wp(100) }}>
-            <StatusBar barStyle={'dark-content'} backgroundColor={AppThemeColor} />
+        <SafeAreaView style={{ backgroundColor: colors.background, height: hp(100), width: wp(100) }}>
+            <StatusBar barStyle={'dark-content'} backgroundColor={colors.background} />
             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
                 <IconButton
                     icon={'arrow-left'}
