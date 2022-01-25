@@ -6,10 +6,9 @@ import CustomCard from '../Components/CustomCard'
 import Header from '../Components/Header'
 import TopCard from '../Components/TopCards'
 import MyTabs from '../Navigation/TopBar'
-import { PrimaryColors } from '../Utils/colors'
+import { PrimaryColors, AppThemeColor, Black, White } from '../Utils/colors'
 import { hp, wp } from '../Utils/Scale'
 import { GetData } from '../Utils/Services'
-
 
 const categoryData = [
     { value: 'news' },
@@ -56,16 +55,18 @@ export default function HomePage() {
             <View>
                 <FlatList
                     data={categoryData}
-                    style={{ height: 50 }}
+                    style={{ height: 50, paddingHorizontal: 10 }}
                     showsHorizontalScrollIndicator={false}
                     horizontal={true}
                     renderItem={({ item }): any =>
                         <TouchableOpacity onPress={() => setCategory(item.value)}
                             style={{ margin: 10, height: 50, }}>
-                            <Text style={{ fontSize: 16, color: category === item.value ? colors.primary : colors.text, }}>
+                            <Text style={{ fontSize: 18, borderRadius: 20, paddingHorizontal: 8, paddingVertical: 5, fontWeight: '600', textTransform: 'capitalize', letterSpacing: 1, alignSelf: 'center',
+                            color: category === item.value ? AppThemeColor : '#808080'
+                             }}>
                                 {item.value}
                             </Text>
-                            <View style={{ height: 3, backgroundColor: category === item.value ? colors.primary : colors.background, width: 40 }} />
+                            <View style={{ height: 3, left: 8, backgroundColor: category === item.value ? AppThemeColor : White, width: item.value.length * 5 }} />
                         </TouchableOpacity>
                     }
                 />
@@ -76,8 +77,8 @@ export default function HomePage() {
                 data={['']}
                 renderItem={(item) =>
                     <>
-                        <Text style={{ fontSize: 22, fontWeight: 'bold', color: colors.text, margin: 10 }}>Top {category === 'news' ? 'news' : category + ' stories'} </Text>
-                        <View>
+                        <Text style={{ fontSize: 22, fontWeight: 'bold', color: Black, paddingHorizontal: 30, paddingVertical: 10 }}>Top {category === 'news' ? 'news' : category + ' stories'} </Text>
+                        <View style={{paddingHorizontal: 20}}>
                             <FlatList
                                 data={topData}
                                 horizontal
@@ -90,11 +91,11 @@ export default function HomePage() {
                             />
                         </View>
 
-                        <Text style={{ fontSize: 22, fontWeight: 'bold', color: colors.text, margin: 10 }}>Latest {category === 'news' ? '' : category} News</Text>
-                        <View>
+                        <Text style={{ fontSize: 22, fontWeight: 'bold', color: Black, paddingHorizontal: 30, paddingVertical: 10 }}>Latest {category === 'news' ? '' : category} News</Text>
+                        <View style={{ paddingHorizontal: 20, overflow: 'hidden' }}>
                             <FlatList
                                 data={data}
-                                style={{ marginBottom: 20 }}
+                                style={{ paddingVertical: 20, }}
                                 renderItem={({ item }): any =>
                                     <CustomCard data={item} />
                                 }

@@ -1,9 +1,10 @@
-import { View, Text } from 'react-native';
 import React from 'react';
+import { View, Text } from 'react-native';
 import { Appbar, IconButton, useTheme } from 'react-native-paper';
-import { PrimaryColors } from '../Utils/colors';
+import { PrimaryColors, AppThemeColor, Black } from '../Utils/colors';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 type Props = {
     title: string;
@@ -22,19 +23,18 @@ export default function Header({ title }: Props) {
     const navigation : NavProps = useNavigation()
     const { colors } = useTheme();
     return (
-        <View style={{ margin: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Text style={{ fontSize: 22, color: colors.text, fontWeight: '700' }}>{title}</Text>
-            
-            <View style={{flexDirection:'row', alignItems:'center'}}>
+        <View style={{ paddingHorizontal: 30, paddingVertical: 20, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <AntDesign name="appstore-o" size={25} color={Black} />
+            {/* <View> */}
+            <Text style={{ fontSize: 22, color: AppThemeColor, fontWeight: '700', alignSelf: 'center', justifyContent: 'center' }}>{title}</Text>   
+            {/* <View style={{height: 3, backgroundColor: '#E00430', width: title.length * 5, marginVertical: 5, borderRadius: 5 }} />          */}
+            {/* </View> */}
             <IconButton
+            color={Black}
+            style={{alignSelf: 'flex-end'}}
                 icon={'magnify'}
                 onPress={() => navigation.navigate('SearchScreen')}
             />
-
-            <IconButton
-                icon={'cog'}
-            />
-            </View>
         </View>
     );
 }

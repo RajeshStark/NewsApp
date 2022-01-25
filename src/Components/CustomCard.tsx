@@ -4,7 +4,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { wp } from '../Utils/Scale';
-
+import { PrimaryColors, AppThemeColor, Black, White } from '../Utils/colors'
 
 type RootStackParamsList = {
     Splash: undefined;
@@ -27,19 +27,24 @@ export default function CustomCard({ data }: any) {
             data : data
         })}
             style={{
-                backgroundColor: colors.background,
-                width: wp(95), borderRadius: 3, margin: 10, flexDirection: 'row',
+                // backgroundColor: colors.background,
+                width: wp(90), 
+                borderRadius: 3, 
+                flexDirection: 'row',
                 borderWidth: 0.05,
-                borderColor: '#000'
+                borderColor: '#000',
+                paddingVertical: 10, 
+                marginVertical: 10,                
+                backgroundColor: '#dcdcdc'
             }}>
             {data.media !== '' ?
                 <Image source={{ uri: data.media }}
-                    style={{ height: 100, width: 100, borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
+                    style={{ height: 90, width: 80, paddingHorizontal: 5, alignSelf: 'center', borderRadius: 15, marginHorizontal: 10 }}
                 />
                 :
-                <View  style={{ backgroundColor: colors.background,height: 100, width: 100, borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}/>
+                <View  style={{ backgroundColor: AppThemeColor ,height: 100, width: 100, borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}/>
             }
-            <Text style={{ fontSize: 18, width: wp(100) - 130, margin: 5, color: colors.text }}>{data.title}</Text>
+            <Text style={{ fontSize: 16, width: wp(100) - 150, paddingHorizontal: 5, color: Black, alignSelf: 'center', }}>{data.title}</Text>
         </TouchableOpacity>
     );
 }
