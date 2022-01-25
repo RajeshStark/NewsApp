@@ -81,6 +81,9 @@ export default function HomePage() {
                         <View style={{paddingHorizontal: 20}}>
                             <FlatList
                                 data={topData}
+                                snapToInterval={wp(85)}
+                                // scrollEventThrottle={}
+                                disableIntervalMomentum={true}
                                 horizontal
                                 showsHorizontalScrollIndicator={false}
                                 style={{ marginBottom: 20 }}
@@ -95,6 +98,7 @@ export default function HomePage() {
                         <View style={{ paddingHorizontal: 20, overflow: 'hidden' }}>
                             <FlatList
                                 data={data}
+                                extraData={true}
                                 style={{ paddingVertical: 20, }}
                                 renderItem={({ item }): any =>
                                     <CustomCard data={item} />

@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, StatusBar, FlatList } from 'react-native';
 import React, { useState } from 'react';
 import { IconButton, Searchbar, useTheme } from 'react-native-paper';
-import { PrimaryColors } from '../Utils/colors';
+import { AppThemeColor, PrimaryColors } from '../Utils/colors';
 import { hp, wp } from '../Utils/Scale';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { GetSearchData } from '../Utils/Services';
@@ -37,8 +37,8 @@ export default function SearchScreen({ navigation }: Props) {
 
     }
     return (
-        <SafeAreaView style={{ backgroundColor: colors.background, height: hp(100), width: wp(100) }}>
-            <StatusBar barStyle={'dark-content'} backgroundColor={colors.background} />
+        <SafeAreaView style={{ backgroundColor: AppThemeColor, height: hp(100), width: wp(100) }}>
+            <StatusBar barStyle={'dark-content'} backgroundColor={AppThemeColor} />
             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
                 <IconButton
                     icon={'arrow-left'}

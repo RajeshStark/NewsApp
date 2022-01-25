@@ -29,17 +29,16 @@ export default function CustomCard({ data }: any) {
             style={{
                 // backgroundColor: colors.background,
                 width: wp(90), 
-                borderRadius: 3, 
+                borderRadius: 5, 
                 flexDirection: 'row',
-                borderWidth: 0.05,
-                borderColor: '#000',
+                
                 paddingVertical: 10, 
                 marginVertical: 10,                
                 backgroundColor: '#dcdcdc'
             }}>
             {data.media !== '' ?
                 <Image source={{ uri: data.media }}
-                    style={{ height: 90, width: 80, paddingHorizontal: 5, alignSelf: 'center', borderRadius: 15, marginHorizontal: 10 }}
+                    style={{ height: 90, width: 80, paddingHorizontal: 5, alignSelf: 'center', borderRadius: 5, marginHorizontal: 10 }}
                 />
                 :
                 <View  style={{ backgroundColor: AppThemeColor ,height: 100, width: 100, borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}/>
